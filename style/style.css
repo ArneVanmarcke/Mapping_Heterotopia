@@ -1,0 +1,85 @@
+/* Fullscreen foreground overlay */
+.foreground {
+    position: fixed;         /* Fix it to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;            /* Full width of the viewport */
+    height: 100vh;           /* Full height of the viewport */
+    background: transparent;  /* White with 80% opacity */
+    z-index: 1001;           /* Ensure it's above other content */
+    display: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;  /* Space for the close button */
+    overflow: hidden;  /* Prevents content overflow */
+}
+
+/* Close button in the top-right corner */
+.closeBtn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1002;  /* Make sure the button is above everything */
+}
+
+/* Fullscreen background overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;  /* Behind the foreground */
+}
+
+
+#glbViewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+#description {
+    mix-blend-mode:color-burn;
+    font-weight: bolder;
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    color: white;
+    width: 200px;
+}
+
+
+.picture-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    overflow-y: auto; /* Enable scrolling */
+    background-color: transparent; /* Semi-transparent background */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack pictures vertically */
+    align-items: center; /* Center pictures horizontally */
+    justify-content: flex-start; /* Start pictures from the top */
+    padding-top: 20px; /* Optional padding at the top */
+}
+
+/* Individual pictures */
+.picture-container img {
+    max-width: 80%; /* Responsive width, 80% of container width */
+    max-height: 80vh; /* Prevent images from exceeding viewport height */
+    margin-bottom: 20px; /* Add spacing between pictures */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for aesthetics */
+    border-radius: 10px; /* Optional rounded corners */
+}
