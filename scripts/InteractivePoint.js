@@ -26,13 +26,12 @@ class InteractivePointOverlay {
 
         this.layerGroup = layerGroup
         this.imageOverlay = L.imageOverlay(frontImage, this.bounds).addTo(this.layerGroup);
-        this.isVisible = false
 
         this.init()
     }
 
     init(){
-        let circleMarker = L.circleMarker(this.coordinate, {
+        L.circleMarker(this.coordinate, {
             radius: 6,
             fillColor: 'transparent', // Correct spelling
             color: 'transparent',
@@ -47,21 +46,10 @@ class InteractivePointOverlay {
             fillOpacity: 1
         }).addTo(this.layerGroup)
 
-        circleMarker.on('click', (e)=>{
-            e.originalEvent.stopPropagation();
-            this.handleMarkerClick(e);
-        });
-
         this.marker.on('click', (e)=>{
             e.originalEvent.stopPropagation();
             this.handleClick(e)
         });
-    }
-
-    handleMarkerClick(e){
-        this.isVisible = !this.isVisible;
-
-        this.updateVisibility();
     }
 
     handleClick(e){
@@ -83,19 +71,8 @@ class InteractivePointOverlay {
         return bound.map(point => map.unproject(point, map.getMaxZoom()))
     }
 
-    updateVisibility(){
-        if(this.isVisible){
-            this.imageOverlay = L.imageOverlay(this.images[this.index], this.bounds).addTo(this.layerGroup);    
-        } else {
-            if(this.imageOverlay!=null){
-                this.imageOverlay.remove()
-            }
-        }
-    }
-
     openGallery(images){
         let pictureContainer = document.getElementsByClassName('picture-container')[0]
-        console.log(pictureContainer)
         pictureContainer.innerHTML = '';
         images.forEach((url) => {
             const img = document.createElement('img');

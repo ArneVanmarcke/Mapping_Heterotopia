@@ -106,6 +106,6 @@ function createLayer(pointsData, layer){
     );
     
     pointsData.rect = pointsData.rect.map(rect => 
-        new InteractiveOverlay(map, rect.bounds, rect.image, rect.toggle, layer)
+        new InteractiveOverlay(map, rect.bounds, rect.image, layer)
     );
 }

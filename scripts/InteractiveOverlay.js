@@ -4,10 +4,9 @@ class InteractiveOverlay {
      * @param {Object} map
      * @param {Array} bounds  
      * @param {Array} images
-     * @param {Boolean} toggleAble
      * @param {L.LayerGroup} layerGroup
     */
-    constructor(map, bounds, images, toggleAble, layerGroup){
+    constructor(map, bounds, images, layerGroup){
         this.map = map
         this.images = images
         this.click_bounds = bounds
@@ -17,8 +16,6 @@ class InteractiveOverlay {
         ];
         this.layerGroup = layerGroup
         this.imageOverlay = L.imageOverlay(images[0], this.bounds).addTo(this.layerGroup);
-        this.toggleAble = toggleAble
-        this.index = 0
 
         this.max_x = Math.max(this.click_bounds[0][0], this.click_bounds[1][0]);
         this.min_x = Math.min(this.click_bounds[0][0], this.click_bounds[1][0]);
@@ -44,26 +41,10 @@ class InteractiveOverlay {
     }
 
     handleClick(e){
-        if(!this.toggleAble){
-            var clickPoint = map.project(e.latlng, map.getMaxZoom());
-            
-
-            if((this.min_x <= clickPoint.x <= this.max_x) && (this.min_y <= clickPoint.y <= this.max_y)){
-                let image = this.images[this.index]
-                let imgName = image.substring(image.lastIndexOf("/")+1, image.lastIndexOf("."))
-                document.getElementById('glbViewer').src = `./data/models/${imgName}.glb`;
-                document.getElementById('foreground-glb').style.display = 'flex';
-            }
-        }else{
-            this.index++;
-            if(this.index > this.images.length-1){
-                this.index = 0;
-            }
-
-            this.imageOverlay.remove()
-            this.imageOverlay = L.imageOverlay(this.images[this.index], this.bounds)
-            .addTo(this.layerGroup);            
-        }
+        let image = this.images[this.index]
+        let imgName = image.substring(image.lastIndexOf("/")+1, image.lastIndexOf("."))
+        document.getElementById('glbViewer').src = `./data/models/${imgName}.glb`;
+        document.getElementById('foreground-glb').style.display = 'flex';
     }
 
     createBounds(){

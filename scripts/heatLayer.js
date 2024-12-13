@@ -58,7 +58,7 @@ var heatData = {
             bounds: [[5667.56, 5692],[6257.5, 4878]],
         },
         { 
-            front:'./data/images/review1.jpg',
+            front:'./data/images/reviews/review1.jpg',
             coordinate: [5096, 5918],
             image: [
                 './data/images/real/kapsalon.jpg',
