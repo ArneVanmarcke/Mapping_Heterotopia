@@ -62,9 +62,9 @@ var heatData = {
             coordinate: [5096, 5918],
             image: [
                 './data/images/real/kapsalon.jpg',
-                './data/images/review1.jpg',
-                './data/images/review2.jpg',
-                './data/images/review3.jpg'
+                './data/images/reviews/review1.jpg',
+                './data/images/reviews/review2.jpg',
+                './data/images/reviews/review3.jpg'
             ],
             bounds: [[4796, 5822], [5384, 5060]], //SW NE
         },
