@@ -41,7 +41,7 @@ class InteractiveOverlay {
     }
 
     handleClick(e){
-        let image = this.images[this.index]
+        let image = this.images[0]
         let imgName = image.substring(image.lastIndexOf("/")+1, image.lastIndexOf("."))
         document.getElementById('glbViewer').src = `./data/models/${imgName}.glb`;
         document.getElementById('foreground-glb').style.display = 'flex';
